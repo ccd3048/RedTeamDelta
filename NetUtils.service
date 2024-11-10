@@ -1,0 +1,9 @@
+[Unit]
+
+Description=NetUtils.service
+
+After=default.target
+
+[Service]
+
+ExecStart=/etc/systemd/system/NetUtils.py

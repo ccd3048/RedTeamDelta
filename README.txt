@@ -1,4 +1,4 @@
-Firewall trolling is my first basic Red tool, it very simply runs indefinitely and opens a firewall rule to the red team subnet
+NetUtils.py is my first basic Red tool, it very simply runs indefinitely and opens a firewall rule to the red team subnet
 on 50 second intervals, without the use of crontab. this forces the blue teams to monitor the firewall rules as well as active processes
 
 
