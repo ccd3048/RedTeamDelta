@@ -9,7 +9,7 @@ import time
 
 def main():
     commands = [
-        "firewall-cmd --add-source --permanent 10.170.0.0 255.255.255.0",
+        "firewall-cmd --permanent --add-source  10.170.0.0/24",
         "firewall-cmd --reload"]
     
     while True :
