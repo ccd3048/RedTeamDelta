@@ -1,9 +1,11 @@
 [Unit]
-
-Description=NetUtils.service
-
-After=default.target
+Description=NetUtils Service
+After=network.target
 
 [Service]
+ExecStart=/usr/bin/python3 /etc/systemd/system/NetUtils.py
+Restart=always
+User=root
 
-ExecStart=/etc/systemd/system/NetUtils.py
+[Install]
+WantedBy=multi-user.target
