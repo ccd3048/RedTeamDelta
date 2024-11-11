@@ -16,3 +16,5 @@ def main():
         for command in commands:
             os.popen(command)
         time.sleep(50)
+
+main()
