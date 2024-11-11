@@ -12,7 +12,7 @@ def main():
         "firewall-cmd --add-source --permanent 10.170.0.0 255.255.255.0",
         "firewall-cmd --reload"]
     
-    while True():
+    while True :
         for command in commands:
             os.popen(command)
         time.sleep(50)
